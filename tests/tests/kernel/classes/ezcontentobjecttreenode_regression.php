@@ -341,6 +341,7 @@ class eZContentObjectTreeNodeRegression extends ezpDatabaseTestCase
         eZUser::cleanupCache();
 
         // check that <user> is allowed to create any Content class in <folder>
+        $previousUser = eZUser::currentUser();
         eZUser::setCurrentlyLoggedInUser(
             eZUser::fetch( $user->attribute( 'id' ) ),
             $user->attribute( 'id' )
@@ -354,6 +355,7 @@ class eZContentObjectTreeNodeRegression extends ezpDatabaseTestCase
         );
 
         ezpINIHelper::restoreINISettings();
+        eZUser::setCurrentlyLoggedInUser( $previousUser, $previousUser->attribute( 'id' ) );
     }
 
     /**
@@ -409,6 +411,7 @@ class eZContentObjectTreeNodeRegression extends ezpDatabaseTestCase
         eZUser::cleanupCache();
 
         // check that <user> is allowed to create any Content class in <folder>
+        $previousUser = eZUser::currentUser();
         eZUser::setCurrentlyLoggedInUser(
             eZUser::fetch( $user->attribute( 'id' ) ),
             $user->attribute( 'id' )
@@ -436,6 +439,7 @@ class eZContentObjectTreeNodeRegression extends ezpDatabaseTestCase
         }
 
         ezpINIHelper::restoreINISettings();
+        eZUser::setCurrentlyLoggedInUser( $previousUser, $previousUser->attribute( 'id' ) );
     }
 
 
